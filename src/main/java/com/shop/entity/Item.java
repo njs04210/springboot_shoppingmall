@@ -30,7 +30,7 @@ public class Item {
 
     @Lob
     @Column(nullable = false)
-    private String ItemDetail; // 상품 상세 설명
+    private String itemDetail; // 상품 상세 설명
 
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellstatus; // 상품 판매 상태
