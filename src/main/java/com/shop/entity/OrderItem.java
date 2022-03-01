@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "order_item")
@@ -23,4 +24,12 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
+
+    private int orderPrice; // 주문 가격
+
+    private int count; // 수량
+
+    private LocalDateTime regTime;
+
+    private LocalDateTime updateTime;
 }
