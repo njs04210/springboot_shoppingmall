@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "orders")
 @Getter
 @Setter
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @Column(name = "order_id")
@@ -33,7 +33,4 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus; // 주문상태
 
-    private LocalDateTime regTime;
-
-    private LocalDateTime updateTime;
 }
