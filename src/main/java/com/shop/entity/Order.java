@@ -24,7 +24,8 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) // 연관관계 주인이 OrderItem의 필드인 order라는 의미
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,
+            orphanRemoval = true) // 연관관계 주인이 OrderItem의 필드인 order라는 의미
     private List<OrderItem> orderItems = new ArrayList<>();
 
     private LocalDateTime orderDate; // 주문일
