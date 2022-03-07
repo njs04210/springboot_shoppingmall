@@ -31,7 +31,7 @@ class ItemRepositoryTest {
         item.setItemNm("테스트 상품");
         item.setPrice(10000);
         item.setItemDetail("테스트 상품 상세 설명");
-        item.setItemSellstatus(ItemSellStatus.SELL);
+        item.setItemSellStatus(ItemSellStatus.SELL);
         item.setStockNumber(100);
         item.setRegTime(LocalDateTime.now());
         item.setUpdateTime(LocalDateTime.now());
@@ -51,7 +51,7 @@ class ItemRepositoryTest {
             item.setItemNm("테스트 상품" + i);
             item.setPrice(10000 + i);
             item.setItemDetail("테스트 상품 상세 설명" + i);
-            item.setItemSellstatus(ItemSellStatus.SELL);
+            item.setItemSellStatus(ItemSellStatus.SELL);
             item.setStockNumber(100);
             item.setRegTime(LocalDateTime.now());
             item.setUpdateTime(LocalDateTime.now());

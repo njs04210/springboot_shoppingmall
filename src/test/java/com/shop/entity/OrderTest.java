@@ -1,7 +1,6 @@
 package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
-import com.shop.constant.OrderStatus;
 import com.shop.repository.ItemRepository;
 import com.shop.repository.MemberRepository;
 import com.shop.repository.OrderItemRepository;
@@ -44,7 +43,7 @@ class OrderTest {
         item.setItemNm("테스트 상품");
         item.setPrice(10000);
         item.setItemDetail("상세설명");
-        item.setItemSellstatus(ItemSellStatus.SELL);
+        item.setItemSellStatus(ItemSellStatus.SELL);
         item.setStockNumber(100);
         item.setRegTime(LocalDateTime.now());
         item.setUpdateTime(LocalDateTime.now());

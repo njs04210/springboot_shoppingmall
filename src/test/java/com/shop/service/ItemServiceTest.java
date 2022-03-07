@@ -78,7 +78,7 @@ class ItemServiceTest {
         assertEquals(itemFormDto.getItemDetail(), item.getItemDetail());
         assertEquals(itemFormDto.getPrice(), item.getPrice());
         assertEquals(itemFormDto.getStockNumber(), item.getStockNumber());
-        assertEquals(itemFormDto.getItemSellStatus(), item.getItemSellstatus());
+        assertEquals(itemFormDto.getItemSellStatus(), item.getItemSellStatus());
         assertEquals(multipartFileList.get(0).getOriginalFilename(), itemImgList.get(0).getOriImgName());
     }
 }
