@@ -67,4 +67,14 @@ public class CartController {
         return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
     }
 
+    @PatchMapping("/cartItem/{cartItemId}")
+    public @ResponseBody
+    ResponseEntity updateCartItemCount(@PathVariable Long cartItemId, @RequestParam int count, Principal principal) {
+        if (!cartService.validateCartItem(cartItemId, principal.getName())) {
+            return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
+        }
+
+        cartService.updateCartItemCount(cartItemId, count);
+        return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
+    }
 }
