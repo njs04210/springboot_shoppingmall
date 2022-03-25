@@ -2,6 +2,8 @@ package com.shop.service;
 
 import com.shop.dto.CartDetailDto;
 import com.shop.dto.CartItemDto;
+import com.shop.dto.CartOrderDto;
+import com.shop.dto.OrderDto;
 import com.shop.entity.Cart;
 import com.shop.entity.CartItem;
 import com.shop.entity.Item;
@@ -28,6 +30,7 @@ public class CartService {
     private final CartItemRepository cartItemRepository;
     private final ItemRepository itemRepository;
     private final MemberRepository memberRepository;
+    private final OrderService orderService;
 
     public Long addCartItem(CartItemDto cartItemDto, String email) {
         Item item = itemRepository.findById(cartItemDto.getItemId()).orElseThrow(EntityNotFoundException::new);
@@ -49,6 +52,29 @@ public class CartService {
             return cartItem.getId();
         }
 
+    }
+
+    public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email) {
+        List<OrderDto> orderDtoList = new ArrayList<>();
+
+        for (CartOrderDto cartOrderDto : cartOrderDtoList) {
+            CartItem cartItem = cartItemRepository.findById(cartOrderDto.getCartItemId()).orElseThrow(EntityNotFoundException::new);
+
+            OrderDto orderDto = new OrderDto();
+            orderDto.setItemId(cartItem.getItem().getId());
+            orderDto.setCount(cartItem.getCount());
+            orderDtoList.add(orderDto);
+        }
+
+        Long orderId = orderService.orders(orderDtoList, email);
+
+        // 장바구니 아이템 지우기
+        for (CartOrderDto cartOrderDto : cartOrderDtoList) {
+            CartItem cartItem = cartItemRepository.findById(cartOrderDto.getCartItemId()).orElseThrow(EntityNotFoundException::new);
+            cartItemRepository.delete(cartItem);
+        }
+
+        return orderId;
     }
 
     @Transactional(readOnly = true)
